@@ -1,7 +1,6 @@
 package org.drobysh.pixel.dto.request;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Builder;
 import org.drobysh.pixel.utils.validator.EmailOrMobile;
@@ -11,7 +10,6 @@ import org.drobysh.pixel.utils.validator.EmailOrMobile;
 public record AuthDto(
 
     @Email
-    @NotBlank
     String email,
 
     @Pattern(regexp = "^\\d{11}$", message = "Телефон должен состоять из 11 цифр")
