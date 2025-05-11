@@ -30,6 +30,7 @@ import org.springframework.util.CollectionUtils;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,7 +69,11 @@ public class UserServiceImpl implements UserService {
         EmailData emailData = userDao.findEmail(userId, request.email()).orElseThrow(
                 () -> new NotFoundException(EmailNotFoundExceptionMessage.EMAIL_NOT_FOUND.getMessage())
         );
-        emailData.setEmail(request.newEmail());
+        if (!emailData.getEmail().equals(request.newEmail())) {
+            emailData.setEmail(request.newEmail());
+        } else {
+            throw new BadRequestException(EmailBadRequestExceptionMessage.EMAIL_ALREADY_EXISTS.getMessage());
+        }
         return emailData.getEmail();
     }
 
@@ -108,7 +113,11 @@ public class UserServiceImpl implements UserService {
         PhoneData phoneData = userDao.findPhone(userId, request.phone()).orElseThrow(
                 () -> new NotFoundException(PhoneNotFoundExceptionMessage.PHONE_NOT_FOUND.getMessage())
         );
-        phoneData.setPhone(request.newPhone());
+        if (!Objects.equals(phoneData.getPhone(), request.newPhone())) {
+            phoneData.setPhone(request.newPhone());
+        } else {
+            throw new BadRequestException(PhoneBadRequestExceptionMessage.PHONE_ALREADY_EXISTS.getMessage());
+        }
         return phoneData.getPhone();
     }
 
