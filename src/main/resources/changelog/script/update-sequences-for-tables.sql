@@ -1,0 +1,1 @@
+SELECT setval('email_data_id_seq', (SELECT MAX(id) FROM email_data), true);

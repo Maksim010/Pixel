@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-email-data-table
+      author: Maksim010
+      changes:
+        - createTable:
+            tableName: email_data
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_email_data_user
+                    references: user(id)
+              - column:
+                  name: email
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
+                    unique: true
+        - createIndex:
+            tableName: email_data
+            indexName: idx_email_data_email
+            columns:
+              - column:
+                  name: email
+                  type: varchar(200)

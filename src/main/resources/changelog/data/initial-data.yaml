@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: load-initial-data
+      author: Maksim010
+      changes:
+        - loadData:
+            tableName: user
+            file: changelog/db/data/users.csv
+            separator: ","
+        - loadData:
+            tableName: account
+            file: changelog/db/data/accounts.csv
+            separator: ","
+        - loadData:
+            tableName: email_data
+            file: changelog/db/data/emails.csv
+            separator: ","
+        - loadData:
+            tableName: phone_data
+            file: changelog/db/data/phones.csv
+            separator: ","

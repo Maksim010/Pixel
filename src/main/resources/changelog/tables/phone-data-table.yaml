@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-phone-data-table
+      author: Maksim010
+      changes:
+        - createTable:
+            tableName: phone_data
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: fk_phone_data_user
+                    references: user(id)
+              - column:
+                  name: phone
+                  type: varchar(13)
+                  constraints:
+                    nullable: false
+        - createIndex:
+            tableName: phone_data
+            indexName: idx_phone_data_phone
+            columns:
+              - column:
+                  name: phone
+                  type: varchar(13)

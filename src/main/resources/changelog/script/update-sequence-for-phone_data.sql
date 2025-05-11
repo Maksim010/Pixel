@@ -1,0 +1,1 @@
+SELECT setval('phone_data_id_seq', (SELECT MAX(id) FROM phone_data), true);

@@ -1,0 +1,4 @@
+id,user_id,email
+1,1,ivan@example.com
+2,1,ivan.work@example.com
+3,2,petr@example.com

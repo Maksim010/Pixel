@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-column-start_balance
+      author: Maksim010
+      changes:
+        - addColumn:
+            tableName: account
+            columns:
+              - column:
+                  name: start_balance
+                  type: numeric(19,2)
+                  constraints:
+                    nullable: false

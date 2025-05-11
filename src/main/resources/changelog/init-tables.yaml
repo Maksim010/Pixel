@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: changelog/tables/user-table.yaml
+  - include:
+      file: changelog/tables/account-table.yaml
+  - include:
+      file: changelog/tables/update-account-table.yaml
+  - include:
+      file: changelog/tables/email-data-table.yaml
+  - include:
+      file: changelog/tables/phone-data-table.yaml
+  - include:
+      file: changelog/data/initial-data.yaml
+  - include:
+      file: changelog/script/update-sequences-for-tables.sql
+  - include:
+      file: changelog/script/update-sequence-for-phone_data.sql
